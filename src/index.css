@@ -1,6 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap");
 @import "tailwindcss";
+
+:root {
+  color: #12131a;
+  background: #eef3ff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(75, 91, 220, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 91, 220, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 8% 12%, rgba(255, 184, 107, 0.24), transparent 28%),
+    radial-gradient(circle at 90% 4%, rgba(124, 92, 255, 0.18), transparent 25%),
+    #eef3ff;
+  background-size: 42px 42px;
+}
+
+h1,
+h2,
+h3,
+.font-black {
+  font-family: "Archivo Black", "Plus Jakarta Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.line-clamp-3,
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  -webkit-line-clamp: 3;
+}
+
+.line-clamp-4 {
+  -webkit-line-clamp: 4;
 }

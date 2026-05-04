@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 px-6 py-6 text-center text-sm text-slate-400">
-      What If Scenario Simulator - WAP Capstone Project
+    <footer className="border-t border-[#12131a]/10 bg-[#eef3ff] px-5 py-8 text-center text-sm font-bold text-[#69708c]">
+      What If Scenario Simulator / WAP Capstone Project
     </footer>
   );
 }
