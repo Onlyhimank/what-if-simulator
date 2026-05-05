@@ -8,6 +8,10 @@ What if MS Dhoni would be a Singer?
 
 The app then generates a multiverse-style result with a story, achievements, meme moments, and saved history.
 
+## Live Demo
+
+[Open the deployed app](https://onlyhimank.github.io/what-if-simulator/)
+
 ## Problem Statement
 
 People enjoy funny "what if" content, memes, and alternate-reality ideas, but they usually see this content passively on social media. This project provides an interactive way for users to create their own scenario combinations and instantly view a fun result.

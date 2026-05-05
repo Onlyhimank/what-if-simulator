@@ -9,9 +9,12 @@ import Login from "./pages/Login";
 import Result from "./pages/Result";
 import History from "./pages/History";
 
+const routerBaseName =
+  import.meta.env.BASE_URL === "/" ? undefined : import.meta.env.BASE_URL;
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBaseName}>
       <Navbar />
 
       <Routes>
