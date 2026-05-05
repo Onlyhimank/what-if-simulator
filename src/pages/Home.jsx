@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { scenarios } from "../utils/scenarioData";
+import { normalizedScenarios } from "../utils/scenarios";
 
-const heroScenario = scenarios[0];
-const examples = scenarios.slice(4, 7);
+const heroScenario = normalizedScenarios[0];
+const examples = normalizedScenarios.slice(4, 7);
 
 const flow = [
   "Type a name",

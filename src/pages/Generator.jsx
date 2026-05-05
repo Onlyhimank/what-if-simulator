@@ -1,20 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { scenarios } from "../utils/scenarioData";
+import { normalizedScenarios } from "../utils/scenarios";
 import {
   addScenarioToHistory,
   increaseAttemptCount,
   saveCurrentScenario,
 } from "../utils/storage";
 
-const heroes = [...new Set(scenarios.map((scenario) => scenario.hero))].slice(
-  0,
-  24
-);
-const roles = [...new Set(scenarios.map((scenario) => scenario.role))].slice(
-  0,
-  24
-);
+const heroes = [...new Set(normalizedScenarios.map((scenario) => scenario.hero))]
+  .filter(Boolean)
+  .slice(0, 24);
+const roles = [...new Set(normalizedScenarios.map((scenario) => scenario.role))]
+  .filter(Boolean)
+  .slice(0, 24);
 
 export default function Generator() {
   const navigate = useNavigate();
@@ -148,7 +146,7 @@ function findScenario(hero, role) {
   const normalizedHero = hero.trim().toLowerCase();
   const normalizedRole = role.trim().toLowerCase();
 
-  const exactMatch = scenarios.find(
+  const exactMatch = normalizedScenarios.find(
     (scenario) =>
       namesMatch(scenario.hero, normalizedHero) &&
       scenario.role.toLowerCase() === normalizedRole
