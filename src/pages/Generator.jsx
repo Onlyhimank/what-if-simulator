@@ -192,7 +192,6 @@ function createCustomScenario(hero, role) {
       `${hero} fans after 24 hours: "We were joking yesterday. Today we are emotionally invested."`,
     ],
     memeKeyword: `${hero} ${role} multiverse meme`,
-    audioSuggestion: getSoundtrackForRole(role),
     tags: ["custom", "multiverse", "funny"],
   };
 }
@@ -522,42 +521,6 @@ function getRoleWorld(role) {
   };
 }
 
-function getSoundtrackForRole(role) {
-  const normalizedRole = role.toLowerCase();
-
-  if (normalizedRole.includes("singer")) {
-    return {
-      title: "Viral Stage Entry Mix",
-      reason: "Built for a dramatic concert entry and fan edits.",
-    };
-  }
-
-  if (normalizedRole.includes("cricketer")) {
-    return {
-      title: "Stadium Sixer Anthem",
-      reason: "A high-energy track for the first boundary of the new timeline.",
-    };
-  }
-
-  if (normalizedRole.includes("chef")) {
-    return {
-      title: "Kitchen Champion Beat",
-      reason: "Light, funny, and perfect for a chaotic cooking montage.",
-    };
-  }
-
-  if (normalizedRole.includes("teacher")) {
-    return {
-      title: "Classroom Entry Theme",
-      reason: "A playful track for the first lecture of the multiverse.",
-    };
-  }
-
-  return {
-    title: "Multiverse Reveal Theme",
-    reason: "A clean background cue for the big alternate-universe reveal.",
-  };
-}
 
 function slugify(value) {
   return value

@@ -47,9 +47,6 @@ function createScenarioFromRole(hero, role) {
     achievements: defaultAchievements,
     memeLines: defaultMemeLines,
     memeKeyword: `${hero} ${roleName} funny multiverse meme`,
-    audioSuggestion: {
-      title: "Multiverse Theme",
-    },
     tags: ["generated", "funny"],
   };
 }

@@ -96,8 +96,8 @@ export default function Login() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-8 text-[#51566b]">
-            Login is stored locally in the browser using localStorage. No
-            backend is required for this capstone demo.
+            Save your profile on this browser and continue creating more
+            multiverse scenarios.
           </p>
         </div>
 
