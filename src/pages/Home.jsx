@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import scenarios from "../data/scenarios.json";
+import { scenarios } from "../utils/scenarioData";
 
 const heroScenario = scenarios[0];
 const examples = scenarios.slice(4, 7);
@@ -24,8 +24,8 @@ export default function Home() {
 
           <p className="mt-8 max-w-xl text-lg leading-8 text-[#51566b]">
             A clean React app that turns random people and roles into funny
-            alternate-universe results with stories, records, memes, and music
-            suggestions.
+            alternate-universe results with stories, achievements, and meme
+            moments.
           </p>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -65,11 +65,8 @@ export default function Home() {
             </p>
 
             <div className="mt-8 grid gap-3">
-              <InfoRow label="Record" value={heroScenario.achievements[0]} />
-              <InfoRow
-                label="Sound"
-                value={heroScenario.audioSuggestion.title}
-              />
+              <InfoRow label="Hero" value={heroScenario.hero} />
+              <InfoRow label="Role" value={heroScenario.role} />
             </div>
           </article>
         </div>
@@ -94,12 +91,12 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 max-w-2xl">
             <h2 className="text-4xl font-black uppercase leading-none tracking-[-0.06em] md:text-6xl">
-              Minimal UI.
-              <span className="block text-[#4b5bdc]">Maximum nonsense.</span>
+              Pick a person.
+              <span className="block text-[#4b5bdc]">Rewrite their reality.</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-[#51566b]">
-              The design stays simple: big typography, clean spacing, clear
-              cards, and data coming from one JSON file.
+              Every combination turns familiar public traits into a new career
+              timeline, so the result feels funny, specific, and easy to share.
             </p>
           </div>
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import scenarios from "../data/scenarios.json";
+import { scenarios } from "../utils/scenarioData";
 import {
   addScenarioToHistory,
   increaseAttemptCount,
