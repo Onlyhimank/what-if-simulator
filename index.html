@@ -8,6 +8,19 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      const builtAppLoaded = document.querySelector('script[src$="/assets/app.js"]');
+
+      if (location.hostname.endsWith("github.io") && !builtAppLoaded) {
+        const style = document.createElement("link");
+        style.rel = "stylesheet";
+        style.href = "/what-if-simulator/assets/index.css";
+        document.head.appendChild(style);
+
+        const appScript = "/what-if-simulator/assets/app.js";
+        import(appScript);
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
