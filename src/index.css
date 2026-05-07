@@ -53,3 +53,19 @@ a {
 .line-clamp-4 {
   -webkit-line-clamp: 4;
 }
+.dark {
+  background-color: #121212;
+  color: white;
+  min-height: 100vh;
+}
+
+.light {
+  background-color: white;
+  color: black;
+  min-height: 100vh;
+}
+.dark body {
+  background-color: #121212;
+}.dark-body {
+  background-color: #121212;
+}

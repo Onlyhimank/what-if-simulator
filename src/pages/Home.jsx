@@ -4,15 +4,15 @@ import { normalizedScenarios } from "../utils/scenarios";
 const heroScenario = normalizedScenarios[0];
 const examples = normalizedScenarios.slice(4, 7);
 
-const flow = [
-  "Type a name",
-  "Add a strange role",
-  "Get the what-if card",
-];
+const flow = ["Type a name", "Add a strange role", "Get the what-if card"];
 
-export default function Home() {
+export default function Home({ darkMode }) {
   return (
-    <main className="min-h-screen bg-[#eef3ff] text-[#12131a]">
+    <main
+      className={`min-h-screen ${
+        darkMode ? "bg-[#121212] text-white" : "bg-[#eef3ff] text-[#12131a]"
+      }`}
+    >
       <section className="mx-auto grid min-h-[calc(100vh-76px)] max-w-7xl items-center gap-12 px-5 py-14 md:grid-cols-[1.05fr_0.95fr] lg:px-10">
         <div>
           <div className="mb-8 h-1 w-16 rounded-full bg-[#ff6b6b]" />
@@ -22,7 +22,11 @@ export default function Home() {
             glitched?
           </h1>
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-[#51566b]">
+          <p
+            className={`mt-8 max-w-xl text-lg leading-8 ${
+              darkMode ? "text-gray-300" : "text-[#51566b]"
+            }`}
+          >
             A clean React app that turns random people and roles into funny
             alternate-universe results with stories, achievements, and meme
             moments.
@@ -47,7 +51,13 @@ export default function Home() {
         <div className="relative">
           <div className="absolute -right-4 -top-4 h-32 w-32 rounded-full bg-[#ffb86b] blur-2xl" />
           <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-[#7c5cff]/35 blur-2xl" />
-          <article className="relative rotate-1 rounded-[2rem] border border-[#12131a] bg-white p-5 shadow-[12px_12px_0_#4b5bdc] transition hover:rotate-0">
+          <article
+            className={`relative rotate-1 rounded-[2rem] border p-5 transition hover:rotate-0 ${
+              darkMode
+                ? "border-gray-700 bg-[#1e1e1e] text-white"
+                : "border-[#12131a] bg-white"
+            } shadow-[12px_12px_0_#4b5bdc]`}
+          >
             <div className="flex items-center justify-between border-b border-[#12131a]/10 pb-4">
               <span className="text-xs font-black uppercase tracking-[0.24em] text-[#69708c]">
                 Generated card
@@ -92,7 +102,9 @@ export default function Home() {
           <div className="mb-10 max-w-2xl">
             <h2 className="text-4xl font-black uppercase leading-none tracking-[-0.06em] md:text-6xl">
               Pick a person.
-              <span className="block text-[#4b5bdc]">Rewrite their reality.</span>
+              <span className="block text-[#4b5bdc]">
+                Rewrite their reality.
+              </span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-[#51566b]">
               Every combination turns familiar public traits into a new career
@@ -103,8 +115,11 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-3">
             {examples.map((scenario) => (
               <article
-                className="rounded-[1.5rem] border border-[#12131a]/12 bg-white p-6 transition hover:-translate-y-1 hover:border-[#4b5bdc]/35 hover:shadow-[0_20px_50px_rgba(75,91,220,0.10)]"
-                key={scenario.id}
+                className={`rounded-[1.5rem] border p-6 transition hover:-translate-y-1 hover:border-[#4b5bdc]/35 hover:shadow-[0_20px_50px_rgba(75,91,220,0.10)] ${
+                  darkMode
+                    ? "border-gray-700 bg-[#1e1e1e] text-white"
+                    : "border-[#12131a]/12 bg-white"
+                }`}
               >
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-[#69708c]">
                   {scenario.hero} / {scenario.role}
