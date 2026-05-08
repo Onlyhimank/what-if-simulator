@@ -410,7 +410,7 @@ function getRoleWorld(role) {
       achievements: [
         (hero) => `${hero}'s debut hook became the most quoted chorus of the week`,
         () => "Turned one live performance into a full-blown reel trend",
-        (hero) => `Made critics write serious reviews about a song everyone first watched as a meme`,
+        () => "Made critics write serious reviews about a song everyone first watched as a meme",
       ],
       memes: [
         (hero) => `Audience: "Can they actually sing?" ${hero}: *drops one line* Audience: "Okay wait, why is this working?"`,

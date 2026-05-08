@@ -1,23 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const USER_KEY = "whatIfUser";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem(USER_KEY);
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
   });
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem(USER_KEY);
-
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
 
   function handleChange(event) {
     const { name, value } = event.target;
