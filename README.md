@@ -104,15 +104,16 @@ This app does not use live AI generation, machine learning, backend authenticati
 - Scenario JSON data
 - Hero and role combinations
 - Story content
+- Generator UI
 - Achievements and meme lines
 - Scenario tags and keywords
+
 
 ### Zeeshan Jaish
 
 - Project idea refinement
 - README and planning documentation
 - Landing page design
-- Generator UI
 - Result page UI
 - History flow
 - localStorage result/history handling
