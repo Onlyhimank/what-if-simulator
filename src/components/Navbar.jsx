@@ -13,7 +13,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
       <div className="navbar-container">
         <Link to="/" className="logo">
-          What If
+          What If Simulator
         </Link>
 
         <div className="nav-links">

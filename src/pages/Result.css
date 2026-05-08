@@ -1,0 +1,290 @@
+.result-page {
+  min-height: 100vh;
+  padding: 56px 20px;
+}
+
+.result-light {
+  background-color: #eef3ff;
+  color: #12131a;
+}
+
+.result-dark {
+  background-color: #121212;
+  color: white;
+}
+
+.result-container {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.result-subtitle {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #4b5bdc;
+}
+
+.result-title {
+  max-width: 900px;
+  font-size: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.generate-btn {
+  padding: 14px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.btn-light {
+  border: 1px solid rgba(18, 19, 26, 0.15);
+  background-color: white;
+  color: #12131a;
+}
+
+.btn-light:hover {
+  background-color: #12131a;
+  color: white;
+}
+
+.btn-dark {
+  border: 1px solid #333;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.result-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr 0.78fr;
+}
+
+.main-card {
+  border-radius: 32px;
+  padding: 40px;
+  box-shadow: 12px 12px 0 #4b5bdc;
+}
+
+.result-card-light  {
+  background-color: white;
+  border: 1px solid #12131a;
+}
+
+.result-card-dark {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+}
+
+.question {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.question-light {
+  color: #69708c;
+}
+
+.question-dark {
+  color: #d1d5db;
+}
+
+.story {
+  margin-top: 28px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.story-light {
+  color: #51566b;
+}
+
+.story-dark {
+  color: #d1d5db;
+}
+
+.achievement-grid {
+  margin-top: 40px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.scene-card {
+  border-radius: 24px;
+  padding: 20px;
+}
+
+.scene-light {
+  background-color: #eef3ff;
+}
+
+.scene-dark {
+  background-color: #2a2a2a;
+}
+
+.scene-label {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.scene-label-light {
+  color: #69708c;
+}
+
+.scene-label-dark {
+  color: #d1d5db;
+}
+
+.scene-text {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.scene-text-light {
+  color: #12131a;
+}
+
+.scene-text-dark {
+  color: white;
+}
+
+.meme-box {
+  border-radius: 32px;
+  padding: 32px;
+}
+.meme-light {
+  background-color: #12131a;
+  color: white;
+}
+
+.meme-dark {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.meme-title {
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #ffb86b;
+}
+
+.meme-list {
+  margin-top: 24px;
+}
+
+.meme-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.meme-label {
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.meme-text {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.empty-page {
+  min-height: 100vh;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-title {
+  font-size: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.empty-text {
+  max-width: 600px;
+  margin: 20px auto 0;
+  line-height: 1.7;
+}
+
+.empty-light {
+  color: #51566b;
+}
+
+.empty-dark {
+  color: #d1d5db;
+}
+
+.empty-btn {
+  display: inline-flex;
+  margin-top: 32px;
+  background-color: #12131a;
+  color: white;
+  padding: 16px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 900px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-title {
+    font-size: 42px;
+  }
+
+  .empty-title {
+    font-size: 42px;
+  }
+}
+.result-light {
+  background-color: #eef3ff;
+  color: #12131a;
+}
+
+.result-dark {
+  background-color: #121212;
+  color: white;
+}

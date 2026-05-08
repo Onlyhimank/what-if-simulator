@@ -7,14 +7,16 @@ import {
   saveCurrentScenario,
 } from "../utils/storage";
 
-const heroes = [...new Set(normalizedScenarios.map((scenario) => scenario.hero))]
+const heroes = [
+  ...new Set(normalizedScenarios.map((scenario) => scenario.hero)),
+]
   .filter(Boolean)
   .slice(0, 24);
 const roles = [...new Set(normalizedScenarios.map((scenario) => scenario.role))]
   .filter(Boolean)
   .slice(0, 24);
 
-export default function Generator() {
+export default function Generator({ darkMode }) {
   const navigate = useNavigate();
   const [hero, setHero] = useState("MS Dhoni");
   const [role, setRole] = useState("Singer");
@@ -29,22 +31,28 @@ export default function Generator() {
     }
 
     const selectedScenario = findScenario(hero, role);
-    const attempts = increaseAttemptCount();
+
+    const user = localStorage.getItem("whatIfUser");
+
+    if (!user) {
+      localStorage.setItem("redirectAfterLogin", "/result");
+      navigate("/login");
+      return;
+    }
 
     saveCurrentScenario(selectedScenario);
     addScenarioToHistory(selectedScenario);
     setError("");
 
-    if (attempts > 5) {
-      navigate("/login");
-      return;
-    }
-
     navigate("/result");
   }
 
   return (
-    <main className="min-h-screen bg-[#eef3ff] px-5 py-14 text-[#12131a] lg:px-10">
+    <main
+      className={`min-h-screen px-5 py-14 lg:px-10 ${
+        darkMode ? "bg-[#121212] text-white" : "bg-[#eef3ff] text-[#12131a]"
+      }`}
+    >
       <section className="mx-auto max-w-6xl">
         <p className="mb-5 text-sm font-black uppercase tracking-[0.24em] text-[#4b5bdc]">
           Scenario generator
@@ -54,12 +62,17 @@ export default function Generator() {
         </h1>
 
         <form
-          className="mt-10 rounded-[2rem] border border-[#12131a] bg-white p-6 shadow-[12px_12px_0_#4b5bdc] md:p-10"
+          className={`mt-10 rounded-[2rem] border p-6 shadow-[12px_12px_0_#4b5bdc] md:p-10 ${
+            darkMode
+              ? "border-gray-700 bg-[#1e1e1e] text-white"
+              : "border-[#12131a] bg-white"
+          }`}
           onSubmit={handleGenerate}
         >
           <div className="flex flex-wrap items-center gap-4 text-4xl font-black uppercase leading-tight tracking-[-0.05em] md:text-6xl">
             <span>What if</span>
             <ScenarioSelect
+              darkMode={darkMode}
               label="person"
               onChange={setHero}
               options={heroes}
@@ -67,6 +80,7 @@ export default function Generator() {
             />
             <span>would be a</span>
             <ScenarioSelect
+              darkMode={darkMode}
               label="role"
               onChange={setRole}
               options={roles}
@@ -82,7 +96,11 @@ export default function Generator() {
           )}
 
           <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <p className="max-w-xl text-sm font-bold leading-6 text-[#51566b]">
+            <p
+              className={`max-w-xl text-sm font-bold leading-6 ${
+                darkMode ? "text-gray-300" : "text-[#51566b]"
+              }`}
+            >
               Choose a person, choose a role, and open a playful alternate
               universe made for that exact combination.
             </p>
@@ -94,19 +112,29 @@ export default function Generator() {
       </section>
 
       <section className="mx-auto mt-12 grid max-w-6xl gap-4 md:grid-cols-2">
-        <QuickPanel items={heroes.slice(0, 10)} onSelect={setHero} title="People" />
-        <QuickPanel items={roles.slice(0, 10)} onSelect={setRole} title="Roles" />
+        <QuickPanel
+          darkMode={darkMode}
+          items={heroes.slice(0, 10)}
+          onSelect={setHero}
+          title="People"
+        />
+        <QuickPanel
+          darkMode={darkMode}
+          items={roles.slice(0, 10)}
+          onSelect={setRole}
+          title="Roles"
+        />
       </section>
     </main>
   );
 }
 
-function ScenarioSelect({ label, onChange, options, value }) {
+function ScenarioSelect({ darkMode, label, onChange, options, value }) {
   return (
     <label className="min-w-[220px] flex-1">
       <span className="sr-only">{label}</span>
       <select
-        className="w-full rounded-[1.4rem] border-2 border-[#12131a] bg-[#eef3ff] px-5 py-4 text-2xl font-black uppercase tracking-[-0.04em] outline-none transition hover:bg-white focus:bg-white md:text-4xl"
+        className={`w-full rounded-[1.4rem] border-2 ${darkMode ? "border-gray-700 bg-[#1e1e1e] text-white" : "border-[#12131a] bg-[#eef3ff] text-[#12131a]"} px-5 py-4 text-2xl font-black uppercase tracking-[-0.04em] outline-none transition hover:bg-white focus:bg-white md:text-4xl`}
         onChange={(event) => onChange(event.target.value)}
         value={value}
       >
@@ -120,16 +148,20 @@ function ScenarioSelect({ label, onChange, options, value }) {
   );
 }
 
-function QuickPanel({ items, onSelect, title }) {
+function QuickPanel({ items, onSelect, title, darkMode }) {
   return (
-    <div className="rounded-[1.5rem] border border-[#12131a]/10 bg-white p-5">
-      <h2 className="text-sm font-black uppercase tracking-[0.2em] text-[#69708c]">
+    <div
+      className={`rounded-[1.5rem] border ${darkMode ? "border-gray-700 bg-[#1e1e1e]" : "border-[#12131a]/10 bg-white"} p-5`}
+    >
+      <h2
+        className={`text-sm font-black uppercase tracking-[0.2em] ${darkMode ? "text-gray-300" : "text-[#69708c]"}`}
+      >
         Quick {title}
       </h2>
       <div className="mt-5 flex flex-wrap gap-2">
         {items.map((item) => (
           <button
-            className="rounded-full border border-[#12131a]/10 px-4 py-2 text-sm font-bold text-[#51566b] transition hover:border-[#4b5bdc] hover:bg-[#eef3ff] hover:text-[#12131a]"
+            className={`rounded-full border ${darkMode ? "border-gray-700 bg-[#1e1e1e] text-white" : "border-[#12131a]/10 bg-white text-[#51566b]"} px-4 py-2 text-sm font-bold transition hover:border-[#4b5bdc] hover:bg-[#eef3ff] hover:text-[#12131a]"`}
             key={item}
             onClick={() => onSelect(item)}
             type="button"
@@ -149,7 +181,7 @@ function findScenario(hero, role) {
   const exactMatch = normalizedScenarios.find(
     (scenario) =>
       namesMatch(scenario.hero, normalizedHero) &&
-      scenario.role.toLowerCase() === normalizedRole
+      scenario.role.toLowerCase() === normalizedRole,
   );
 
   if (exactMatch) {
@@ -207,7 +239,8 @@ function getPersonaFlavor(hero) {
       realWorld:
         "mass speeches, disciplined public image, election-stage confidence, and the kind of slogan timing people instantly recognise",
       signature: "Mitron energy",
-      style: "disciplined, dramatic, and perfectly timed for prime-time discussion",
+      style:
+        "disciplined, dramatic, and perfectly timed for prime-time discussion",
     };
   }
 
@@ -328,7 +361,8 @@ function getPersonaFlavor(hero) {
       realWorld:
         "YouTube sketch comedy, relatable friend-group chaos, and exaggerated everyday situations",
       signature: "friend-circle chaos",
-      style: "loud, relatable, and built like a sketch that escalates too quickly",
+      style:
+        "loud, relatable, and built like a sketch that escalates too quickly",
     };
   }
 
@@ -409,13 +443,17 @@ function getRoleWorld(role) {
       story: (hero, persona) =>
         `The debut concert is not over-produced; it is built around ${persona.style} stage presence. The first song becomes famous less because of perfect vocals and more because ${hero} makes the performance feel like a national event.`,
       achievements: [
-        (hero) => `${hero}'s debut hook became the most quoted chorus of the week`,
+        (hero) =>
+          `${hero}'s debut hook became the most quoted chorus of the week`,
         () => "Turned one live performance into a full-blown reel trend",
-        (hero) => `Made critics write serious reviews about a song everyone first watched as a meme`,
+        (hero) =>
+          `Made critics write serious reviews about a song everyone first watched as a meme`,
       ],
       memes: [
-        (hero) => `Audience: "Can they actually sing?" ${hero}: *drops one line* Audience: "Okay wait, why is this working?"`,
-        (hero, persona) => `Music label: "We need promotion." ${hero}: "${persona.signature}." Promotion department: "Honestly, enough."`,
+        (hero) =>
+          `Audience: "Can they actually sing?" ${hero}: *drops one line* Audience: "Okay wait, why is this working?"`,
+        (hero, persona) =>
+          `Music label: "We need promotion." ${hero}: "${persona.signature}." Promotion department: "Honestly, enough."`,
       ],
     };
   }
@@ -432,11 +470,13 @@ function getRoleWorld(role) {
       achievements: [
         (hero) => `${hero} turned one over into a full social-media festival`,
         () => "Made the scoreboard feel like a reality show finale",
-        () => "Created a celebration style that every gully-cricket player copied the next morning",
+        () =>
+          "Created a celebration style that every gully-cricket player copied the next morning",
       ],
       memes: [
         (hero) => `Bowler: "Plan kya hai?" ${hero}: "Content."`,
-        (hero) => `Commentator: "${hero} has changed the game." Twitter: "No, the game has filed a complaint."`,
+        (hero) =>
+          `Commentator: "${hero} has changed the game." Twitter: "No, the game has filed a complaint."`,
       ],
     };
   }
@@ -457,8 +497,10 @@ function getRoleWorld(role) {
         () => "Turned the most boring chapter into a trending discussion",
       ],
       memes: [
-        (hero) => `Student: "Sir, important hai kya?" ${hero}: "Beta, life important hai."`,
-        () => `Backbenchers after class: "We came for attendance. We left with character development."`,
+        (hero) =>
+          `Student: "Sir, important hai kya?" ${hero}: "Beta, life important hai."`,
+        () =>
+          `Backbenchers after class: "We came for attendance. We left with character development."`,
       ],
     };
   }
@@ -478,8 +520,10 @@ function getRoleWorld(role) {
         () => "Turned food reviews into fan theories",
       ],
       memes: [
-        (hero) => `Customer: "Chef special kya hai?" ${hero}: "Aaj ka plot twist."`,
-        () => `Food blogger: "Taste kaisa hai?" Waiter: "Sir, first understand the emotion."`,
+        (hero) =>
+          `Customer: "Chef special kya hai?" ${hero}: "Aaj ka plot twist."`,
+        () =>
+          `Food blogger: "Taste kaisa hai?" Waiter: "Sir, first understand the emotion."`,
       ],
     };
   }
@@ -495,13 +539,17 @@ function getRoleWorld(role) {
       story: (hero, persona) =>
         `Every statement becomes a headline, every pause gets analysed, and every decision arrives with ${persona.style} confidence. The job technically changes, but the internet treats it like a weekly episode.`,
       achievements: [
-        () => "Made one normal announcement trend for absolutely no normal reason",
-        (hero) => `${hero}'s first policy-style line became a reaction template`,
+        () =>
+          "Made one normal announcement trend for absolutely no normal reason",
+        (hero) =>
+          `${hero}'s first policy-style line became a reaction template`,
         () => "Turned public feedback into a meme parliament",
       ],
       memes: [
-        (hero) => `Reporter: "Simple answer please." ${hero}: "Simple answers are for simple timelines."`,
-        () => `Public: "Is this serious?" Internet: "Too late, posters are already made."`,
+        (hero) =>
+          `Reporter: "Simple answer please." ${hero}: "Simple answers are for simple timelines."`,
+        () =>
+          `Public: "Is this serious?" Internet: "Too late, posters are already made."`,
       ],
     };
   }
@@ -517,7 +565,8 @@ function getRoleWorld(role) {
     ],
     memes: [
       (hero) => `Internet: "This makes no sense." ${hero}: "Exactly."`,
-      () => `Everyone laughed for five minutes, then quietly admitted the concept had potential.`,
+      () =>
+        `Everyone laughed for five minutes, then quietly admitted the concept had potential.`,
     ],
   };
 }

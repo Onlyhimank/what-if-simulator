@@ -33,11 +33,19 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<Home darkMode={darkMode} />} />
-          <Route path="/generator" element={<Generator />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/result" element={<Result />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/about" element={<About />} />
+
+          <Route
+            path="/generator"
+            element={<Generator darkMode={darkMode} />}
+          />
+
+          <Route path="/login" element={<Login darkMode={darkMode} />} />
+
+          <Route path="/result" element={<Result darkMode={darkMode} />} />
+
+          <Route path="/history" element={<History darkMode={darkMode} />} />
+
+          <Route path="/about" element={<About darkMode={darkMode} />} />
         </Routes>
 
         <Footer />

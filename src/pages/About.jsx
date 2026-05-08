@@ -2,7 +2,7 @@ import "./About.css";
 
 // List of main features of the application
 // Stored as an array so we can dynamically render them in UI
-const features = ["Scenario generator", "JSON-based content", "Funny results"];
+const features = ["Toggle", "JSON-based content", "Funny results"];
 
 //  List of technologies used in the project
 // Also stored as an array for dynamic rendering
@@ -15,18 +15,10 @@ const techStack = [
   "localStorage",
 ];
 
-export default function About() {
+export default function About({ darkMode }) {
   return (
-    <main
-      className="about-container"
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#eef3ff",
-        padding: "20px",
-        color: "black",
-      }}
-    >
-      <section className="card">
+    <main className={`about-container ${darkMode ? "dark-about" : ""}`}>
+      <section className="about-content">
         <p className="about-subtitle">About the project</p>
 
         <h1
@@ -57,10 +49,7 @@ export default function About() {
             </p>
           </section>
 
-          <section
-            className="card"
-            style={{ border: "1px solid black", padding: "10px", flex: 1 }}
-          >
+          <section className="card">
             <h2 className="section-title">How it works</h2>
             <p className="about-subtitle">
               User selects a person and a role. If a match exists in JSON data,
@@ -89,18 +78,10 @@ export default function About() {
           </div>
         </div>
 
-        <section
-          className="card"
-          style={{
-            marginTop: "20px",
-            backgroundColor: "black",
-            color: "white",
-            padding: "15px",
-          }}
-        >
+        <section className="important-box">
           <h2 className="section-title">Important :</h2>
 
-          <p className="viva-box">
+          <p>
             This project does not use live AI, backend authentication, or a
             database. It uses predefined JSON data, React state, routing, and
             localStorage. This keeps the project simple and within syllabus.
