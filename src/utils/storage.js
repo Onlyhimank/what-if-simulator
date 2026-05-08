@@ -1,6 +1,7 @@
 const CURRENT_SCENARIO_KEY = "whatIfCurrentScenario";
 const HISTORY_KEY = "whatIfHistory";
 const ATTEMPTS_KEY = "whatIfAttempts";
+const USER_KEY = "whatIfUser";
 
 export function saveCurrentScenario(scenario) {
   localStorage.setItem(CURRENT_SCENARIO_KEY, JSON.stringify(scenario));
@@ -47,4 +48,14 @@ export function increaseAttemptCount() {
   const nextCount = getAttemptCount() + 1;
   localStorage.setItem(ATTEMPTS_KEY, String(nextCount));
   return nextCount;
+}
+
+export function getSavedUser() {
+  const savedUser = localStorage.getItem(USER_KEY);
+
+  if (!savedUser) {
+    return null;
+  }
+
+  return JSON.parse(savedUser);
 }

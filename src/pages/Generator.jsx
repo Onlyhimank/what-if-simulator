@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { normalizedScenarios } from "../utils/scenarios";
 import {
   addScenarioToHistory,
+  getSavedUser,
   increaseAttemptCount,
   saveCurrentScenario,
 } from "../utils/storage";
@@ -35,7 +36,7 @@ export default function Generator() {
     addScenarioToHistory(selectedScenario);
     setError("");
 
-    if (attempts > 5) {
+    if (attempts > 5 && !getSavedUser()) {
       navigate("/login");
       return;
     }

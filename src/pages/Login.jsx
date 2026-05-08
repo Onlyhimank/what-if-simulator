@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getCurrentScenario, getSavedUser } from "../utils/storage";
 
 const USER_KEY = "whatIfUser";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem(USER_KEY);
-    return savedUser ? JSON.parse(savedUser) : null;
-  });
+  const [user, setUser] = useState(() => getSavedUser());
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,7 +32,7 @@ export default function Login() {
 
     localStorage.setItem(USER_KEY, JSON.stringify(newUser));
     setUser(newUser);
-    navigate("/generator");
+    navigate(getCurrentScenario() ? "/result" : "/generator");
   }
 
   function handleLogout() {
