@@ -32,9 +32,9 @@ export default function Generator({ darkMode }) {
 
     const selectedScenario = findScenario(hero, role);
 
-    const user = localStorage.getItem("whatIfUser");
+    const user = JSON.parse(localStorage.getItem("whatIfUser"));
 
-    if (!user) {
+    if (!user || !user.loggedIn) {
       localStorage.setItem("redirectAfterLogin", "/result");
       navigate("/login");
       return;
