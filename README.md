@@ -102,6 +102,7 @@ This app does not use live AI generation, machine learning, backend authenticati
 ### Mradul Sharma
 
 - Scenario JSON data
+- Deep Quality Tester
 - Hero and role combinations
 - Story content
 - Generator UI
