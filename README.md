@@ -97,7 +97,7 @@ This app does not use live AI generation, machine learning, backend authenticati
 - React Router setup
 - Basic page structure
 - Navbar and footer
-- Generator UI
+
 - localStorage login page
 
 ### Mradul Sharma
@@ -106,6 +106,7 @@ This app does not use live AI generation, machine learning, backend authenticati
 - Deep Quality Tester
 - Hero and role combinations
 - Story content
+- Generator UI
 - Achievements and meme lines
 - Scenario tags and keywords
 
